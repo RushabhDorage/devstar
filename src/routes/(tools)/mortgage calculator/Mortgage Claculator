@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indian Mortgage Calculator</title>
+    <script>
+        function calculateEMI() {
+            // Get the loan amount, interest rate, and loan tenure from the user
+            var principal = parseFloat(document.getElementById("principal").value);
+            var rate = parseFloat(document.getElementById("rate").value) / 100 / 12;
+            var tenure = parseInt(document.getElementById("tenure").value) * 12;
+
+            // Calculate EMI
+            var emi = principal * rate * Math.pow(1 + rate, tenure) / (Math.pow(1 + rate, tenure) - 1);
+
+            // Display the result
+            document.getElementById("result").innerHTML = "Your EMI is ₹" + emi.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Indian Mortgage Calculator</h1>
+    <form>
+        <label for="principal">Loan Amount (₹): </label>
+        <input type="text" id="principal"><br><br>
+
+        <label for="rate">Interest Rate (% per annum): </label>
+        <input type="text" id="rate"><br><br>
+
+        <label for="tenure">Loan Tenure (years): </label>
+        <input type="text" id="tenure"><br><br>
+
+        <input type="button" value="Calculate EMI" onclick="calculateEMI()"><br><br>
+
+        <p id="result"></p>
+    </form>
+</body>
+</html>
